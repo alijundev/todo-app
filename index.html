@@ -1,13 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App - Sulfikar Alijun</title>
-</head>
-<body>
-    <h1>Hello World</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Todo App - Sulfikar Alijun</title>
 
-    <script type="module" src="./src/main.js"></script>
-</body>
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Alijun Todo</h1>
+                <p>Stay focus</p>
+            </header>
+            <main>
+                <div class="input-todo-wrapper">
+                    <input type="text" id="input-task" placeholder="Masukkan task disini...">
+                    <button id="btn-input-task">+</button>
+                </div>
+                <div class="task-lists">
+                    <h2>Tasks</h2>
+                    <div class="tasks">
+                        <!-- <div class="task">
+                            <input type="checkbox" class="task-status">
+                            <span class="task-text">Task 1</span>
+                            <button class="deleteBtn">x</button>
+                        </div> -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <small id="app-version">v1.1.1</small>
+
+        <script type="module" src="./src/main.js"></script>
+    </body>
 </html>

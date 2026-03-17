@@ -1,0 +1,95 @@
+header {
+    width: 100%;
+    text-align: center;
+    h1 {
+        font-size: 48px;
+    }
+    p {
+        color: var(--color-text-secondary);
+    }
+}
+
+main > div {
+    width: 100%;
+}
+
+.input-todo-wrapper {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    #input-task {
+        flex: 1;
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 1px solid #adacac;
+        background-color: var(--color-surface);
+        &:focus {
+            outline: 1px solid #000000;
+        }
+    }
+    button {
+        padding: 8px 16px;
+        font-size: 20px;
+        background-color: #0f0f0f;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        &:hover {
+            cursor: pointer;
+            opacity: 0.9;
+        }
+        &:active {
+            scale: 0.9;
+        }
+    }
+}
+
+.task-lists {
+    margin-top: 40px;
+    h2 {
+        font-size: 24px;
+    }
+    
+    .tasks {
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .task {
+            background: var(--color-surface);
+            border: 1px solid #adacac;
+            padding: 14px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            input[type="checkbox"] {
+                transform: scale(1.3);
+                accent-color: var(--color-text-primary);
+            }
+            .task-text {
+                margin-left: 10px;
+                flex: 1;
+                &.completed {
+                    text-decoration: line-through;
+                    opacity: 0.6;
+                }
+            }
+            .deleteBtn {
+                background-color: var(--color-danger);
+                padding: 4px 10px;
+                border: none;
+                color: white;
+                font-size: 18px;
+                border-radius: 4px;
+                visibility: hidden;
+                cursor: pointer;
+            }
+            &:hover {
+                .deleteBtn {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
