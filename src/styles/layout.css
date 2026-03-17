@@ -5,3 +5,10 @@
     min-height: 100dvh;
     padding-top: 80px;
 }
+
+#app-version {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: var(--color-text-muted);
+}

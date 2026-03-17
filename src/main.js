@@ -1,4 +1,5 @@
 import "./styles/main.css"
+import {version} from "../package.json"
 
 const inputTask = document.getElementById("input-task");
 const btnInputTask = document.getElementById("btn-input-task");
@@ -82,3 +83,6 @@ function createTaskDOM(task) {
     taskEl.appendChild(span);
     return taskEl
 }
+
+const appVersionEl = document.getElementById("app-version");
+appVersionEl.innerText = `v${version}`
