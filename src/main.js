@@ -5,13 +5,35 @@ const inputTask = document.getElementById("input-task");
 const btnInputTask = document.getElementById("btn-input-task");
 const tasksWrapper = document.querySelector(".tasks");
 
-const tasks = []
+const tasks = loadTasks();
+console.log(tasks);
+
+document.addEventListener("DOMContentLoaded", () => {
+    onTasksChange()
+})
+
+
+function onTasksChange() {
+    saveTasks()
+    renderTasks()
+}
+
+function loadTasks() {
+    return JSON.parse(localStorage.getItem("tasks") || "[]")
+}
+
+async function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
 inputTask.addEventListener("keypress", (e) => {
     if ( e.key === "Enter") {
         addTask()
-    }
-    
+    }  
+})
+
+btnInputTask.addEventListener("click", () => {
+    addTask()
 })
 
 function addTask() {
@@ -32,12 +54,19 @@ function addTask() {
     
     tasks.push(newTask);
     inputTask.value = ""
-    renderTasks()
+    onTasksChange()
 }
 
-btnInputTask.addEventListener("click", () => {
-    addTask()
-})
+function deleteTask(id) {
+    const taskIndex = tasks.findIndex(t => t.id === id);
+    if (taskIndex === -1) {
+        return
+    }
+
+    tasks.splice(taskIndex, 1);
+    onTasksChange()
+
+}
 
 function renderTasks() {
     console.log(tasks);
@@ -67,7 +96,7 @@ function createTaskDOM(task) {
         const targetTask = tasks.find(t => t.id === task.id);
         targetTask.isCompleted = checkboxEl.checked;
 
-        renderTasks()
+        onTasksChange()
         
     })
     
@@ -78,9 +107,17 @@ function createTaskDOM(task) {
         span.classList.add("completed")
     }
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("class","deleteBtn");
+    deleteBtn.innerText = "x";
+    deleteBtn.addEventListener("click", () => {
+        deleteTask(task.id)
+    })
 
     taskEl.appendChild(checkboxEl);
     taskEl.appendChild(span);
+    taskEl.appendChild(deleteBtn)
+
     return taskEl
 }
 
